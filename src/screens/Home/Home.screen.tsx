@@ -1,27 +1,23 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  useColorScheme,
-} from 'react-native';
+import {ActivityIndicator, SafeAreaView, ScrollView, Text} from 'react-native';
 
-import {Colors, Header} from 'react-native/Libraries/NewAppScreen';
+import {Header} from 'react-native/Libraries/NewAppScreen';
+import {useAppSelector} from '../../store';
+import {useGetPokemonQuery} from '../../store/pokemon/pokemon.api';
 
 const HomeScreen = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const creditAmount = useAppSelector(state => state.home.creditAmount);
+  const {isLoading, data, isError, error} = useGetPokemonQuery(null);
 
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  console.log({isLoading, data, isError, error});
 
   return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
+    <SafeAreaView>
+      <ScrollView contentInsetAdjustmentBehavior="automatic">
         <Header />
+        <Text>Credit Amount: £{creditAmount}</Text>
+        {isLoading && <ActivityIndicator />}
+        {data && <Text>{data.name}</Text>}
       </ScrollView>
     </SafeAreaView>
   );
