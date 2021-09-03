@@ -13,7 +13,6 @@
     "@react-navigation/native": "^6.0.2",
     "@react-navigation/native-stack": "^6.1.0",
     "@reduxjs/toolkit": "^1.6.1",
-    "node-fetch": "^3.0.0",
     "react": "17.0.2",
     "react-native": "0.65.1",
     "react-native-safe-area-context": "^3.3.2",
@@ -34,6 +33,7 @@
     "@types/react-redux": "^7.1.18",
     "@types/react-test-renderer": "^17.0.1",
     "babel-jest": "^27.1.0",
+    "cross-fetch": "^3.1.4",
     "eslint": "^7.14.0",
     "jest": "^27.1.0",
     "metro-react-native-babel-preset": "^0.66.0",
@@ -46,11 +46,9 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": [
-      "<rootDir>/jest/setup.ts"
-    ],
     "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
+      "@testing-library/jest-native/extend-expect",
+      "<rootDir>/jest/setupEnv.ts"
     ],
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation|node-fetch|fetch-blob)"
