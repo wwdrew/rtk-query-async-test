@@ -15,7 +15,7 @@ export const pokemonApi = createApi({
   endpoints: build => ({
     getPokemon: build.query<PokemonResponse, null>({
       query: () => ({
-        url: 'pokemon/1',
+        url: 'pokemon/ditto',
       }),
     }),
   }),

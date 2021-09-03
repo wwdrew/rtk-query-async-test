@@ -5,6 +5,7 @@ import {
 } from '@testing-library/react-native';
 import {Provider} from 'react-redux';
 import {createStore, rootInitialState} from '../src/store';
+import {QueryClient, QueryClientProvider} from 'react-query';
 
 function render(
   ui: ReactElement,
@@ -18,8 +19,12 @@ function render(
     renderOptions?: Omit<RenderOptions, 'wrapper'>;
   } = {},
 ) {
+  const queryClient = new QueryClient();
+
   const Wrapper: FC = ({children}) => (
-    <Provider store={store}>{children}</Provider>
+    <QueryClientProvider client={queryClient}>
+      <Provider store={store}>{children}</Provider>
+    </QueryClientProvider>
   );
 
   return rntlRender(ui, {wrapper: Wrapper, ...renderOptions});
