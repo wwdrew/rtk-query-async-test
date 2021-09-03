@@ -38,6 +38,7 @@
     "eslint": "^7.14.0",
     "jest": "^27.1.0",
     "metro-react-native-babel-preset": "^0.66.0",
+    "msw": "^0.35.0",
     "react-native-codegen": "^0.0.7",
     "react-test-renderer": "17.0.2",
     "typescript": "^4.4.2"
@@ -49,10 +50,11 @@
     "preset": "react-native",
     "setupFilesAfterEnv": [
       "@testing-library/jest-native/extend-expect",
-      "<rootDir>/jest/setupEnv.ts"
+      "<rootDir>/jest/setupEnv.js",
+      "<rootDir>/jest/setupTestServer.js"
     ],
     "transformIgnorePatterns": [
-      "node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation|node-fetch|fetch-blob)"
+      "node_modules/(?!(jest-)?@?react-native|@react-native-community|@react-navigation)"
     ],
     "moduleFileExtensions": [
       "ts",
