@@ -1,9 +1,6 @@
 import {server} from '../src/mocks/server';
 import {beforeAll, afterEach, afterAll} from '@jest/globals';
 
-// required to implement fetch within node tests
-global.fetch = require('node-fetch');
-
 // Establish API mocking before all tests.
 beforeAll(() => server.listen());
 
